@@ -2,20 +2,20 @@ import { useMemo, useState } from "react";
 import { Search, ShoppingCart } from "lucide-react";
 import { ServiceCard } from "./ServiceCard";
 import { ServiceIcon } from "./ServiceIcon";
-import { CATEGORIES, SERVICES, type ServiceCategory } from "@/data/services";
+import { CATEGORIES, type Service, type ServiceCategory } from "@/data/services";
 
-export function ServicesExplorer() {
+export function ServicesExplorer({ services }: { services: Service[] }) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<ServiceCategory | "all">("all");
 
   const results = useMemo(() => {
     const q = query.trim();
-    return SERVICES.filter(
+    return services.filter(
       (s) =>
         (category === "all" || s.category === category) &&
         (q === "" || s.name.includes(q) || s.short.includes(q) || s.description.includes(q)),
     );
-  }, [query, category]);
+  }, [query, category, services]);
 
   return (
     <div dir="rtl" className="min-h-screen bg-background pb-16">
