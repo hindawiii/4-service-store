@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicesExplorer } from "@/components/services/ServicesExplorer";
+import { listServices } from "@/lib/services.functions";
 
 export const Route = createFileRoute("/")({
+  loader: () => listServices(),
   head: () => ({
     meta: [
       { title: "iServices — خدمات رقمية بأسعار مناسبة" },
@@ -17,5 +19,13 @@ export const Route = createFileRoute("/")({
       },
     ],
   }),
-  component: ServicesExplorer,
+  errorComponent: () => (
+    <p className="p-10 text-center text-sm text-muted-foreground">تعذّر تحميل الخدمات.</p>
+  ),
+  component: HomePage,
 });
+
+function HomePage() {
+  const services = Route.useLoaderData();
+  return <ServicesExplorer services={services} />;
+}
