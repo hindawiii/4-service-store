@@ -1,13 +1,15 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import { Star } from "lucide-react";
 import { ServiceIcon } from "@/components/services/ServiceIcon";
-import { SERVICES } from "@/data/services";
+import { getService, listServiceReviews } from "@/lib/services.functions";
 
 export const Route = createFileRoute("/services/$id")({
-  loader: ({ params }) => {
-    const service = SERVICES.find((s) => s.id === params.id);
+  loader: async ({ params }) => {
+    const service = await getService({ data: { id: params.id } });
     if (!service) throw notFound();
-    return { service };
+    const reviews = await listServiceReviews({ data: { id: params.id } });
+    return { service, reviews };
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
@@ -33,7 +35,11 @@ export const Route = createFileRoute("/services/$id")({
 });
 
 function ServiceDetail() {
-  const { service } = Route.useLoaderData();
+  const { service, reviews } = Route.useLoaderData();
+  const average =
+    reviews.length > 0
+      ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
+      : 0;
 
   return (
     <div dir="rtl" className="min-h-screen bg-background">
@@ -74,6 +80,40 @@ function ServiceDetail() {
           >
             اطلب الآن
           </button>
+        </div>
+
+        <div className="surface-card rounded-3xl p-5">
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm font-bold text-foreground">تقييمات العملاء</h2>
+            {reviews.length > 0 && (
+              <span className="flex items-center gap-1 text-sm text-accent">
+                <Star className="size-4 fill-current" strokeWidth={1.5} />
+                {average.toFixed(1)} ({reviews.length})
+              </span>
+            )}
+          </div>
+          {reviews.length === 0 ? (
+            <p className="mt-3 text-sm text-muted-foreground">لا توجد تقييمات بعد لهذه الخدمة.</p>
+          ) : (
+            <ul className="mt-4 space-y-3">
+              {reviews.map((r) => (
+                <li key={r.id} className="rounded-2xl border border-border bg-card/50 p-4">
+                  <div className="flex gap-0.5 text-accent">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star
+                        key={i}
+                        className={"size-3.5 " + (i < r.rating ? "fill-current" : "opacity-30")}
+                        strokeWidth={1.5}
+                      />
+                    ))}
+                  </div>
+                  {r.comment && (
+                    <p className="mt-2 text-sm leading-6 text-muted-foreground">{r.comment}</p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </div>
