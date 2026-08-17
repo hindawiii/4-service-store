@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import { Search, ShoppingCart } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { Search, ShoppingCart, User } from "lucide-react";
 import { ServiceCard } from "./ServiceCard";
 import { ServiceIcon } from "./ServiceIcon";
 import { CATEGORIES, type Service, type ServiceCategory } from "@/data/services";
@@ -34,13 +35,20 @@ export function ServicesExplorer({ services }: { services: Service[] }) {
                 className="h-12 w-full rounded-2xl border border-border bg-card/70 pr-12 pl-4 text-sm text-foreground outline-none backdrop-blur placeholder:text-muted-foreground focus:border-primary/60"
               />
             </div>
-            <button
-              type="button"
+            <Link
+              to="/cart"
               aria-label="سلة المشتريات"
               className="flex size-12 shrink-0 items-center justify-center rounded-2xl border border-border bg-card/70 text-foreground backdrop-blur transition-colors hover:text-primary"
             >
               <ShoppingCart className="size-5" strokeWidth={1.5} />
-            </button>
+            </Link>
+            <Link
+              to="/orders"
+              aria-label="طلباتي"
+              className="flex size-12 shrink-0 items-center justify-center rounded-2xl border border-border bg-card/70 text-foreground backdrop-blur transition-colors hover:text-primary"
+            >
+              <User className="size-5" strokeWidth={1.5} />
+            </Link>
           </div>
 
           <div className="mt-8 space-y-2">

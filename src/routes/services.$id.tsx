@@ -1,8 +1,12 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
+import { toast } from "sonner";
 import { ArrowRight } from "lucide-react";
 import { Star } from "lucide-react";
 import { ServiceIcon } from "@/components/services/ServiceIcon";
 import { getService, listServiceReviews } from "@/lib/services.functions";
+import { useCartMutations } from "@/lib/cart";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/services/$id")({
   loader: async ({ params }) => {
@@ -36,10 +40,27 @@ export const Route = createFileRoute("/services/$id")({
 
 function ServiceDetail() {
   const { service, reviews } = Route.useLoaderData();
+  const navigate = useNavigate();
+  const { add } = useCartMutations();
   const average =
     reviews.length > 0
       ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
       : 0;
+
+  async function order() {
+    const { data } = await supabase.auth.getSession();
+    if (!data.session) {
+      navigate({ to: "/auth" });
+      return;
+    }
+    try {
+      await add.mutateAsync(service.id);
+      toast.success("تمت الإضافة إلى السلة");
+      navigate({ to: "/cart" });
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "تعذّرت الإضافة");
+    }
+  }
 
   return (
     <div dir="rtl" className="min-h-screen bg-background">
@@ -76,7 +97,9 @@ function ServiceDetail() {
           </div>
           <button
             type="button"
-            className="rounded-2xl bg-primary px-6 py-3 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90"
+            onClick={order}
+            disabled={add.isPending}
+            className="rounded-2xl bg-primary px-6 py-3 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
           >
             اطلب الآن
           </button>
