@@ -1,13 +1,15 @@
 import { useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Search, ShoppingCart, User } from "lucide-react";
+import { Search, ShieldCheck, ShoppingCart, User } from "lucide-react";
 import { ServiceCard } from "./ServiceCard";
 import { ServiceIcon } from "./ServiceIcon";
+import { useIsAdmin } from "@/hooks/useIsAdmin";
 import { CATEGORIES, type Service, type ServiceCategory } from "@/data/services";
 
 export function ServicesExplorer({ services }: { services: Service[] }) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<ServiceCategory | "all">("all");
+  const { data: isAdmin } = useIsAdmin();
 
   const results = useMemo(() => {
     const q = query.trim();
@@ -49,6 +51,15 @@ export function ServicesExplorer({ services }: { services: Service[] }) {
             >
               <User className="size-5" strokeWidth={1.5} />
             </Link>
+            {isAdmin && (
+              <Link
+                to="/admin"
+                aria-label="لوحة التحكم"
+                className="flex size-12 shrink-0 items-center justify-center rounded-2xl border border-border bg-card/70 text-primary backdrop-blur transition-colors hover:text-primary"
+              >
+                <ShieldCheck className="size-5" strokeWidth={1.5} />
+              </Link>
+            )}
           </div>
 
           <div className="mt-8 space-y-2">
