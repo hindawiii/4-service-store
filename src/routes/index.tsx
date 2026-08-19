@@ -1,18 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ServicesExplorer } from "@/components/services/ServicesExplorer";
+import { LandingPage } from "@/components/landing/LandingPage";
 import { listServices } from "@/lib/services.functions";
 
 export const Route = createFileRoute("/")({
   loader: () => listServices(),
   head: () => ({
     meta: [
-      { title: "iServices — خدمات رقمية بأسعار مناسبة" },
+      { title: "iServices — متجر الخدمات الرقمية في السودان" },
       {
         name: "description",
         content:
           "تثبيت أنظمة لينكس وويندوز، اشتراكات الذكاء الاصطناعي، دعم فني عن بُعد، ودورات مميزة داخل منصة iLearn.",
       },
-      { property: "og:title", content: "iServices — خدمات رقمية بأسعار مناسبة" },
+      { property: "og:title", content: "iServices — متجر الخدمات الرقمية في السودان" },
       {
         property: "og:description",
         content: "خدمات تقنية سريعة: تثبيت أنظمة، اشتراكات AI، دعم فني، ودورات مميزة.",
@@ -27,5 +27,5 @@ export const Route = createFileRoute("/")({
 
 function HomePage() {
   const services = Route.useLoaderData();
-  return <ServicesExplorer services={services} />;
+  return <LandingPage services={services} />;
 }
