@@ -204,10 +204,13 @@ export type Database = {
           category: Database["public"]["Enums"]["service_category"]
           created_at: string
           description: string
+          details: Json
+          developer: string | null
           featured: boolean
           icon: string
           id: string
           name: string
+          official_url: string | null
           price: number
           short: string
           sort_order: number
@@ -218,10 +221,13 @@ export type Database = {
           category: Database["public"]["Enums"]["service_category"]
           created_at?: string
           description?: string
+          details?: Json
+          developer?: string | null
           featured?: boolean
           icon?: string
           id: string
           name: string
+          official_url?: string | null
           price?: number
           short?: string
           sort_order?: number
@@ -232,10 +238,13 @@ export type Database = {
           category?: Database["public"]["Enums"]["service_category"]
           created_at?: string
           description?: string
+          details?: Json
+          developer?: string | null
           featured?: boolean
           icon?: string
           id?: string
           name?: string
+          official_url?: string | null
           price?: number
           short?: string
           sort_order?: number
@@ -286,7 +295,14 @@ export type Database = {
         | "completed"
         | "cancelled"
       payment_method: "bankak" | "bank_transfer" | "usdt" | "other"
-      service_category: "software" | "ai" | "support" | "course" | "bundle"
+      service_category:
+        | "software"
+        | "ai"
+        | "support"
+        | "course"
+        | "bundle"
+        | "anime"
+        | "games"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -417,7 +433,15 @@ export const Constants = {
       app_role: ["admin", "user"],
       order_status: ["pending", "paid", "processing", "completed", "cancelled"],
       payment_method: ["bankak", "bank_transfer", "usdt", "other"],
-      service_category: ["software", "ai", "support", "course", "bundle"],
+      service_category: [
+        "software",
+        "ai",
+        "support",
+        "course",
+        "bundle",
+        "anime",
+        "games",
+      ],
     },
   },
 } as const
