@@ -1,4 +1,13 @@
-export type ServiceCategory = "software" | "ai" | "support" | "course" | "bundle";
+import type { ServiceDetails } from "./service-details";
+
+export type ServiceCategory =
+  | "software"
+  | "ai"
+  | "support"
+  | "course"
+  | "bundle"
+  | "anime"
+  | "games";
 
 export interface Service {
   id: string;
@@ -9,6 +18,9 @@ export interface Service {
   category: ServiceCategory;
   icon: string;
   featured?: boolean;
+  developer?: string | null;
+  official_url?: string | null;
+  details?: ServiceDetails | null;
 }
 
 export const CATEGORIES: { id: ServiceCategory | "all"; label: string; icon: string }[] = [
@@ -18,6 +30,8 @@ export const CATEGORIES: { id: ServiceCategory | "all"; label: string; icon: str
   { id: "support", label: "دعم فني", icon: "Wrench" },
   { id: "course", label: "دورات مميزة", icon: "GraduationCap" },
   { id: "bundle", label: "حزم", icon: "Package" },
+  { id: "anime", label: "أنمي", icon: "Tv" },
+  { id: "games", label: "ألعاب", icon: "Gamepad2" },
 ];
 
 export const SERVICES: Service[] = [
