@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpLeft } from "lucide-react";
+import { ArrowUpLeft, Info } from "lucide-react";
 import { ServiceIcon } from "./ServiceIcon";
 import type { Service } from "@/data/services";
 
@@ -22,11 +22,17 @@ export function ServiceCard({ service }: { service: Service }) {
         <h3 className="text-base font-bold leading-snug text-card-foreground">{service.name}</h3>
         <p className="text-sm text-muted-foreground">{service.short}</p>
       </div>
-      <div className="mt-auto flex items-center justify-between border-t border-border pt-4">
-        <span className="text-lg font-bold text-primary">${service.price}</span>
-        <span className="flex items-center gap-1 text-xs text-muted-foreground transition-colors group-hover:text-primary">
-          التفاصيل
-          <ArrowUpLeft className="size-4" strokeWidth={1.5} />
+      <div className="mt-auto space-y-3 border-t border-border pt-4">
+        <div className="flex items-center justify-between">
+          <span className="text-lg font-bold text-primary">${service.price}</span>
+          <span className="flex items-center gap-1 text-xs text-muted-foreground transition-colors group-hover:text-primary">
+            التفاصيل
+            <ArrowUpLeft className="size-4" strokeWidth={1.5} />
+          </span>
+        </div>
+        <span className="flex w-full items-center justify-center gap-1.5 rounded-2xl border border-primary/40 bg-primary/10 px-3 py-2 text-xs font-medium text-primary transition-colors group-hover:bg-primary/20">
+          <Info className="size-3.5" strokeWidth={1.5} />
+          المزيد من التفاصيل
         </span>
       </div>
     </Link>

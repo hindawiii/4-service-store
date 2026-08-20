@@ -4,7 +4,8 @@ import { z } from "zod";
 import type { Database } from "@/integrations/supabase/types";
 import type { Service } from "@/data/services";
 
-const SELECT = "id, name, short, description, price, category, icon, featured";
+const SELECT =
+  "id, name, short, description, price, category, icon, featured, developer, official_url, details";
 
 function publicClient() {
   const key = process.env["SUPABASE_PUBLISHABLE_KEY"]!;
