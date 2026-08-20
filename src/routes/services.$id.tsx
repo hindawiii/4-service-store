@@ -4,6 +4,8 @@ import { toast } from "sonner";
 import { ArrowRight } from "lucide-react";
 import { Star } from "lucide-react";
 import { ServiceIcon } from "@/components/services/ServiceIcon";
+import { ServiceDetailsView } from "@/components/services/ServiceDetailsView";
+import { hasDetails, type ServiceDetails } from "@/data/service-details";
 import { getService, listServiceReviews } from "@/lib/services.functions";
 import { useCartMutations } from "@/lib/cart";
 import { supabase } from "@/integrations/supabase/client";
@@ -40,6 +42,7 @@ export const Route = createFileRoute("/services/$id")({
 
 function ServiceDetail() {
   const { service, reviews } = Route.useLoaderData();
+  const details = (service.details ?? undefined) as ServiceDetails | undefined;
   const navigate = useNavigate();
   const { add } = useCartMutations();
   const average =
@@ -80,6 +83,23 @@ function ServiceDetail() {
             <div>
               <h1 className="text-xl font-bold text-foreground sm:text-2xl">{service.name}</h1>
               <p className="mt-1 text-sm text-muted-foreground">{service.short}</p>
+              {(service.developer || service.official_url) && (
+                <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                  {service.developer && (
+                    <span className="rounded-full bg-muted px-2.5 py-1">المطوّر: {service.developer}</span>
+                  )}
+                  {service.official_url && (
+                    <a
+                      href={service.official_url}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                      className="rounded-full bg-primary/15 px-2.5 py-1 text-primary"
+                    >
+                      الموقع الرسمي
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -104,6 +124,8 @@ function ServiceDetail() {
             اطلب الآن
           </button>
         </div>
+
+        {hasDetails(details) ? <ServiceDetailsView details={details!} /> : null}
 
         <div className="surface-card rounded-3xl p-5">
           <div className="flex items-center justify-between">
