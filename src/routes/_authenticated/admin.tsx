@@ -5,6 +5,8 @@ import { ArrowRight, ShieldAlert } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useIsAdmin } from "@/hooks/useIsAdmin";
+import { ServiceDetailsEditor } from "@/components/admin/ServiceDetailsEditor";
+import type { ServiceDetails } from "@/data/service-details";
 import type { Database } from "@/integrations/supabase/types";
 
 type OrderStatus = Database["public"]["Enums"]["order_status"];
