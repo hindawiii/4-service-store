@@ -189,12 +189,13 @@ function OrdersAdmin() {
 
 function ServicesAdmin() {
   const qc = useQueryClient();
+  const [editing, setEditing] = useState<string | null>(null);
   const { data: services = [], isLoading } = useQuery({
     queryKey: ["admin", "services"],
     queryFn: async () => {
       const { data, error } = await supabase
         .from("services")
-        .select("id, name, price, category, active, featured, sort_order")
+        .select("id, name, price, category, active, featured, sort_order, developer, official_url, details")
         .order("sort_order", { ascending: true });
       if (error) throw error;
       return data ?? [];
@@ -202,7 +203,20 @@ function ServicesAdmin() {
   });
 
   const update = useMutation({
-    mutationFn: async ({ id, patch }: { id: string; patch: { price?: number; active?: boolean; featured?: boolean } }) => {
+    mutationFn: async ({
+      id,
+      patch,
+    }: {
+      id: string;
+      patch: {
+        price?: number;
+        active?: boolean;
+        featured?: boolean;
+        developer?: string;
+        official_url?: string;
+        details?: ServiceDetails;
+      };
+    }) => {
       const { error } = await supabase.from("services").update(patch).eq("id", id);
       if (error) throw error;
     },
