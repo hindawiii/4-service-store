@@ -5,6 +5,8 @@ import { ArrowRight, ShieldAlert } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useIsAdmin } from "@/hooks/useIsAdmin";
+import { ServiceDetailsEditor } from "@/components/admin/ServiceDetailsEditor";
+import type { ServiceDetails } from "@/data/service-details";
 import type { Database } from "@/integrations/supabase/types";
 
 type OrderStatus = Database["public"]["Enums"]["order_status"];
@@ -187,12 +189,13 @@ function OrdersAdmin() {
 
 function ServicesAdmin() {
   const qc = useQueryClient();
+  const [editing, setEditing] = useState<string | null>(null);
   const { data: services = [], isLoading } = useQuery({
     queryKey: ["admin", "services"],
     queryFn: async () => {
       const { data, error } = await supabase
         .from("services")
-        .select("id, name, price, category, active, featured, sort_order")
+        .select("id, name, price, category, active, featured, sort_order, developer, official_url, details")
         .order("sort_order", { ascending: true });
       if (error) throw error;
       return data ?? [];
@@ -200,7 +203,20 @@ function ServicesAdmin() {
   });
 
   const update = useMutation({
-    mutationFn: async ({ id, patch }: { id: string; patch: { price?: number; active?: boolean; featured?: boolean } }) => {
+    mutationFn: async ({
+      id,
+      patch,
+    }: {
+      id: string;
+      patch: {
+        price?: number;
+        active?: boolean;
+        featured?: boolean;
+        developer?: string;
+        official_url?: string;
+        details?: ServiceDetails;
+      };
+    }) => {
       const { error } = await supabase.from("services").update(patch).eq("id", id);
       if (error) throw error;
     },
@@ -254,7 +270,41 @@ function ServicesAdmin() {
             >
               {s.featured ? "مميزة" : "غير مميزة"}
             </button>
+            <button
+              onClick={() => setEditing(editing === s.id ? null : s.id)}
+              className="rounded-2xl bg-muted px-3 py-1.5 text-xs font-medium text-foreground"
+            >
+              {editing === s.id ? "إغلاق التفاصيل" : "تحرير التفاصيل"}
+            </button>
           </div>
+          {editing === s.id && (
+            <>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                <label className="block space-y-1">
+                  <span className="text-xs text-muted-foreground">المطوّر</span>
+                  <input
+                    defaultValue={s.developer ?? ""}
+                    onBlur={(e) => update.mutate({ id: s.id, patch: { developer: e.target.value } })}
+                    className="h-10 w-full rounded-xl border border-border bg-card/70 px-3 text-sm text-foreground outline-none focus:border-primary/60"
+                  />
+                </label>
+                <label className="block space-y-1">
+                  <span className="text-xs text-muted-foreground">الموقع الرسمي</span>
+                  <input
+                    dir="ltr"
+                    defaultValue={s.official_url ?? ""}
+                    onBlur={(e) => update.mutate({ id: s.id, patch: { official_url: e.target.value } })}
+                    className="h-10 w-full rounded-xl border border-border bg-card/70 px-3 text-sm text-foreground outline-none focus:border-primary/60"
+                  />
+                </label>
+              </div>
+              <ServiceDetailsEditor
+                value={(s.details ?? {}) as ServiceDetails}
+                saving={update.isPending}
+                onSave={(details) => update.mutate({ id: s.id, patch: { details } })}
+              />
+            </>
+          )}
         </div>
       ))}
     </div>
