@@ -270,7 +270,41 @@ function ServicesAdmin() {
             >
               {s.featured ? "مميزة" : "غير مميزة"}
             </button>
+            <button
+              onClick={() => setEditing(editing === s.id ? null : s.id)}
+              className="rounded-2xl bg-muted px-3 py-1.5 text-xs font-medium text-foreground"
+            >
+              {editing === s.id ? "إغلاق التفاصيل" : "تحرير التفاصيل"}
+            </button>
           </div>
+          {editing === s.id && (
+            <>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                <label className="block space-y-1">
+                  <span className="text-xs text-muted-foreground">المطوّر</span>
+                  <input
+                    defaultValue={s.developer ?? ""}
+                    onBlur={(e) => update.mutate({ id: s.id, patch: { developer: e.target.value } })}
+                    className="h-10 w-full rounded-xl border border-border bg-card/70 px-3 text-sm text-foreground outline-none focus:border-primary/60"
+                  />
+                </label>
+                <label className="block space-y-1">
+                  <span className="text-xs text-muted-foreground">الموقع الرسمي</span>
+                  <input
+                    dir="ltr"
+                    defaultValue={s.official_url ?? ""}
+                    onBlur={(e) => update.mutate({ id: s.id, patch: { official_url: e.target.value } })}
+                    className="h-10 w-full rounded-xl border border-border bg-card/70 px-3 text-sm text-foreground outline-none focus:border-primary/60"
+                  />
+                </label>
+              </div>
+              <ServiceDetailsEditor
+                value={(s.details ?? {}) as ServiceDetails}
+                saving={update.isPending}
+                onSave={(details) => update.mutate({ id: s.id, patch: { details } })}
+              />
+            </>
+          )}
         </div>
       ))}
     </div>
