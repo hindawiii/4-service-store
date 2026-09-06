@@ -156,14 +156,14 @@ export function ServiceDetailsEditor({
           <select
             className={input}
             defaultValue={d.availability?.sudan ?? ""}
-            onChange={(e) =>
+            onChange={(e) => {
+              const { sudan: _drop, ...rest } = d.availability ?? {};
               patch({
-                availability: {
-                  ...d.availability,
-                  sudan: (e.target.value || undefined) as "yes" | "no" | "partial" | undefined,
-                },
-              })
-            }
+                availability: e.target.value
+                  ? { ...rest, sudan: e.target.value as "yes" | "no" | "partial" }
+                  : rest,
+              });
+            }}
           >
             <option value="">—</option>
             <option value="yes">متوفر</option>
