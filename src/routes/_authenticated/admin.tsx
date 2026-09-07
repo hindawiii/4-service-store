@@ -217,7 +217,10 @@ function ServicesAdmin() {
         details?: ServiceDetails;
       };
     }) => {
-      const { error } = await supabase.from("services").update(patch).eq("id", id);
+      const { error } = await supabase
+        .from("services")
+        .update(patch as never)
+        .eq("id", id);
       if (error) throw error;
     },
     onSuccess: () => {
