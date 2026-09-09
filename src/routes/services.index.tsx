@@ -6,12 +6,12 @@ export const Route = createFileRoute("/services/")({
   loader: () => listServices(),
   head: () => ({
     meta: [
-      { title: "الخدمات | iServices" },
+      { title: "الخدمات | inservice" },
       {
         name: "description",
         content: "تصفح جميع الخدمات الرقمية: برامج وأنظمة، ذكاء اصطناعي، دعم فني، ودورات مميزة.",
       },
-      { property: "og:title", content: "الخدمات | iServices" },
+      { property: "og:title", content: "الخدمات | inservice" },
       {
         property: "og:description",
         content: "تصفح جميع الخدمات الرقمية وابحث عن ما يناسبك بسعر مناسب.",

@@ -6,13 +6,13 @@ export const Route = createFileRoute("/")({
   loader: () => listServices(),
   head: () => ({
     meta: [
-      { title: "iServices — متجر الخدمات الرقمية في السودان" },
+      { title: "inservice — متجر الخدمات الرقمية في السودان" },
       {
         name: "description",
         content:
           "تثبيت أنظمة لينكس وويندوز، اشتراكات الذكاء الاصطناعي، دعم فني عن بُعد، ودورات مميزة داخل منصة iLearn.",
       },
-      { property: "og:title", content: "iServices — متجر الخدمات الرقمية في السودان" },
+      { property: "og:title", content: "inservice — متجر الخدمات الرقمية في السودان" },
       {
         property: "og:description",
         content: "خدمات تقنية سريعة: تثبيت أنظمة، اشتراكات AI، دعم فني، ودورات مميزة.",
