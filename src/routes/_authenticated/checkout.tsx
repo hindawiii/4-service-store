@@ -144,7 +144,21 @@ function CheckoutPage() {
               <span>
                 <span className="block text-sm font-bold text-foreground">{m.label}</span>
                 <span className="block text-xs text-muted-foreground">{m.hint}</span>
+                {method === m.id &&
+                  (m.account ? (
+                    <span className="mt-2 block rounded-xl bg-muted px-3 py-2 text-xs text-foreground">
+                      <span className="block font-bold">
+                        الحساب: <span dir="ltr">{m.account}</span>
+                      </span>
+                      {m.holder && <span className="block">باسم: {m.holder}</span>}
+                    </span>
+                  ) : (
+                    <span className="mt-2 block rounded-xl border border-dashed border-border px-3 py-2 text-xs text-muted-foreground">
+                      {PENDING_ACCOUNT_NOTE}
+                    </span>
+                  ))}
               </span>
+
             </label>
           ))}
         </div>
