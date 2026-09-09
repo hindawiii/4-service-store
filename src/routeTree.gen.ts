@@ -22,6 +22,7 @@ import { Route as AuthenticatedCheckoutRouteImport } from './routes/_authenticat
 import { Route as AuthenticatedOrdersRouteImport } from './routes/_authenticated/orders'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesIdRouteImport } from './routes/services.$id'
+import { Route as ApiPublicSitemapDotxmlRouteImport } from './routes/api/public/sitemap[.]xml'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -87,6 +88,11 @@ const ServicesIdRoute = ServicesIdRouteImport.update({
   path: '/services/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicSitemapDotxmlRoute = ApiPublicSitemapDotxmlRouteImport.update({
+  id: '/api/public/sitemap.xml',
+  path: '/api/public/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -101,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/orders': typeof AuthenticatedOrdersRoute
   '/services/$id': typeof ServicesIdRoute
   '/services/': typeof ServicesIndexRoute
+  '/api/public/sitemap.xml': typeof ApiPublicSitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -115,6 +122,7 @@ export interface FileRoutesByTo {
   '/orders': typeof AuthenticatedOrdersRoute
   '/services/$id': typeof ServicesIdRoute
   '/services': typeof ServicesIndexRoute
+  '/api/public/sitemap.xml': typeof ApiPublicSitemapDotxmlRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -131,6 +139,7 @@ export interface FileRoutesById {
   '/_authenticated/orders': typeof AuthenticatedOrdersRoute
   '/services/$id': typeof ServicesIdRoute
   '/services/': typeof ServicesIndexRoute
+  '/api/public/sitemap.xml': typeof ApiPublicSitemapDotxmlRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -147,6 +156,7 @@ export interface FileRouteTypes {
     | '/orders'
     | '/services/$id'
     | '/services/'
+    | '/api/public/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -161,6 +171,7 @@ export interface FileRouteTypes {
     | '/orders'
     | '/services/$id'
     | '/services'
+    | '/api/public/sitemap.xml'
   id:
     | '__root__'
     | '/'
@@ -176,6 +187,7 @@ export interface FileRouteTypes {
     | '/_authenticated/orders'
     | '/services/$id'
     | '/services/'
+    | '/api/public/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -188,6 +200,7 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   ServicesIdRoute: typeof ServicesIdRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
+  ApiPublicSitemapDotxmlRoute: typeof ApiPublicSitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -283,6 +296,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/sitemap.xml': {
+      id: '/api/public/sitemap.xml'
+      path: '/api/public/sitemap.xml'
+      fullPath: '/api/public/sitemap.xml'
+      preLoaderRoute: typeof ApiPublicSitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -313,6 +333,7 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   ServicesIdRoute: ServicesIdRoute,
   ServicesIndexRoute: ServicesIndexRoute,
+  ApiPublicSitemapDotxmlRoute: ApiPublicSitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

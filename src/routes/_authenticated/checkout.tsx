@@ -6,14 +6,12 @@ import { supabase } from "@/integrations/supabase/client";
 import { useCart } from "@/lib/cart";
 import { useQueryClient } from "@tanstack/react-query";
 
-type PaymentMethod = "bankak" | "bank_transfer" | "usdt" | "other";
+import { PAY_ACCOUNTS, PENDING_ACCOUNT_NOTE, type PayAccount } from "@/config/site";
 
-const METHODS: { id: PaymentMethod; label: string; hint: string }[] = [
-  { id: "bankak", label: "بنكك (Bankak)", hint: "تحويل عبر تطبيق بنكك — حساب: 1234567890" },
-  { id: "bank_transfer", label: "تحويل بنكي", hint: "حوالة بنكية داخل السودان" },
-  { id: "usdt", label: "USDT (TRC20)", hint: "محفظة: TXXXXXXXXXXXXXXXXXXXXXXX" },
-  { id: "other", label: "طريقة أخرى", hint: "سنتواصل معك للاتفاق على طريقة الدفع" },
-];
+type PaymentMethod = PayAccount["id"];
+
+const METHODS = PAY_ACCOUNTS;
+
 
 export const Route = createFileRoute("/_authenticated/checkout")({
   head: () => ({
@@ -146,7 +144,21 @@ function CheckoutPage() {
               <span>
                 <span className="block text-sm font-bold text-foreground">{m.label}</span>
                 <span className="block text-xs text-muted-foreground">{m.hint}</span>
+                {method === m.id &&
+                  (m.account ? (
+                    <span className="mt-2 block rounded-xl bg-muted px-3 py-2 text-xs text-foreground">
+                      <span className="block font-bold">
+                        الحساب: <span dir="ltr">{m.account}</span>
+                      </span>
+                      {m.holder && <span className="block">باسم: {m.holder}</span>}
+                    </span>
+                  ) : (
+                    <span className="mt-2 block rounded-xl border border-dashed border-border px-3 py-2 text-xs text-muted-foreground">
+                      {PENDING_ACCOUNT_NOTE}
+                    </span>
+                  ))}
               </span>
+
             </label>
           ))}
         </div>
