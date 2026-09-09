@@ -28,9 +28,9 @@ const TABS = [
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
     meta: [
-      { title: "لوحة التحكم | iServices" },
-      { name: "description", content: "إدارة الطلبات والخدمات والتقييمات في متجر iServices." },
-      { property: "og:title", content: "لوحة التحكم | iServices" },
+      { title: "لوحة التحكم | inservices" },
+      { name: "description", content: "إدارة الطلبات والخدمات والتقييمات في متجر inservices." },
+      { property: "og:title", content: "لوحة التحكم | inservices" },
       { property: "og:description", content: "إدارة الطلبات والخدمات والتقييمات." },
       { name: "robots", content: "noindex" },
     ],

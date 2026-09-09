@@ -6,12 +6,12 @@ import { SITE, hasAnyContact, whatsappLink } from "@/config/site";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "تواصل معنا | iServices" },
+      { title: "تواصل معنا | inservices" },
       {
         name: "description",
-        content: "طرق التواصل مع فريق iServices للاستفسار عن الخدمات الرقمية والدفع والتنفيذ.",
+        content: "طرق التواصل مع فريق inservices للاستفسار عن الخدمات الرقمية والدفع والتنفيذ.",
       },
-      { property: "og:title", content: "تواصل معنا | iServices" },
+      { property: "og:title", content: "تواصل معنا | inservices" },
       { property: "og:description", content: "واتساب، بريد إلكتروني، وقنوات التواصل الرسمية." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
