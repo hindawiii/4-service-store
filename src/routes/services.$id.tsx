@@ -24,9 +24,9 @@ export const Route = createFileRoute("/services/$id")({
     const { service } = loaderData;
     return {
       meta: [
-        { title: `${service.name} | iServices` },
+        { title: `${service.name} | inservices` },
         { name: "description", content: service.description },
-        { property: "og:title", content: `${service.name} | iServices` },
+        { property: "og:title", content: `${service.name} | inservices` },
         { property: "og:description", content: service.description },
       ],
     };
