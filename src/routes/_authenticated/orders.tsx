@@ -14,9 +14,9 @@ const STATUS: Record<string, { label: string; cls: string }> = {
 export const Route = createFileRoute("/_authenticated/orders")({
   head: () => ({
     meta: [
-      { title: "طلباتي | iServices" },
+      { title: "طلباتي | inservice" },
       { name: "description", content: "تابع حالة طلباتك من الخدمات الرقمية وتفاصيل الدفع." },
-      { property: "og:title", content: "طلباتي | iServices" },
+      { property: "og:title", content: "طلباتي | inservice" },
       { property: "og:description", content: "تابع حالة طلباتك وتفاصيلها." },
     ],
   }),

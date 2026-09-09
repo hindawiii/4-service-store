@@ -16,9 +16,9 @@ const METHODS = PAY_ACCOUNTS;
 export const Route = createFileRoute("/_authenticated/checkout")({
   head: () => ({
     meta: [
-      { title: "إتمام الطلب | iServices" },
+      { title: "إتمام الطلب | inservice" },
       { name: "description", content: "اختر طريقة الدفع (بنكك، تحويل بنكي، USDT) وارفع إثبات الدفع لإتمام طلبك." },
-      { property: "og:title", content: "إتمام الطلب | iServices" },
+      { property: "og:title", content: "إتمام الطلب | inservice" },
       { property: "og:description", content: "ادفع عبر بنكك أو USDT وارفع إثبات الدفع." },
     ],
   }),

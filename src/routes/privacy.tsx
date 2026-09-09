@@ -4,12 +4,12 @@ import { Card, PageShell } from "@/components/layout/PageShell";
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "سياسة الخصوصية | iServices" },
+      { title: "سياسة الخصوصية | inservice" },
       {
         name: "description",
-        content: "كيف نجمع بياناتك ونحميها في iServices: الحساب، الطلبات، إثبات الدفع، ومدة الاحتفاظ.",
+        content: "كيف نجمع بياناتك ونحميها في inservice: الحساب، الطلبات، إثبات الدفع، ومدة الاحتفاظ.",
       },
-      { property: "og:title", content: "سياسة الخصوصية | iServices" },
+      { property: "og:title", content: "سياسة الخصوصية | inservice" },
       { property: "og:description", content: "بياناتك وإثبات دفعك محفوظة بشكل خاص وغير معروضة للعامة." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
