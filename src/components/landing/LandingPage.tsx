@@ -17,7 +17,9 @@ import {
 } from "lucide-react";
 import { ServiceCard } from "@/components/services/ServiceCard";
 import { ServiceIcon } from "@/components/services/ServiceIcon";
+import { SiteFooter } from "@/components/layout/SiteFooter";
 import { CATEGORIES, type Service } from "@/data/services";
+
 
 const FEATURES = [
   {
@@ -298,13 +300,8 @@ export function LandingPage({ services }: { services: Service[] }) {
         </div>
       </section>
 
-      <footer className="border-t border-border py-8">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-4 text-center text-xs text-muted-foreground">
-          <span className="text-sm font-bold text-foreground">iServices</span>
-          <p>خدمات رقمية سريعة وموثوقة — الخرطوم، السودان.</p>
-          <p>© {new Date().getFullYear()} iServices. جميع الحقوق محفوظة.</p>
-        </div>
-      </footer>
+      <SiteFooter />
+
     </div>
   );
 }
