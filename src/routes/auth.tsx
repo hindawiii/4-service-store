@@ -8,9 +8,9 @@ import { lovable } from "@/integrations/lovable";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "تسجيل الدخول | inservices" },
+      { title: "تسجيل الدخول | iServices" },
       { name: "description", content: "سجّل دخولك أو أنشئ حساباً جديداً لطلب الخدمات الرقمية ومتابعة طلباتك." },
-      { property: "og:title", content: "تسجيل الدخول | inservices" },
+      { property: "og:title", content: "تسجيل الدخول | iServices" },
       { property: "og:description", content: "أنشئ حسابك لطلب الخدمات ومتابعة الطلبات." },
     ],
   }),

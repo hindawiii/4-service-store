@@ -5,12 +5,12 @@ import { SITE } from "@/config/site";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "من نحن | inservices" },
+      { title: "من نحن | iServices" },
       {
         name: "description",
-        content: "تعرّف على inservices: متجر خدمات رقمية من الخرطوم يقدّم البرامج والاشتراكات والدعم الفني والدورات.",
+        content: "تعرّف على iServices: متجر خدمات رقمية من الخرطوم يقدّم البرامج والاشتراكات والدعم الفني والدورات.",
       },
-      { property: "og:title", content: "من نحن | inservices" },
+      { property: "og:title", content: "من نحن | iServices" },
       { property: "og:description", content: "قصتنا، هدفنا، رسالتنا وقيمنا في خدمة المستخدم السوداني." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

@@ -79,10 +79,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "inservices — خدمات رقمية" },
+      { title: "iServices — خدمات رقمية" },
       { name: "description", content: "منصة الخدمات الرقمية: برامج، ذكاء اصطناعي، دعم فني، ودورات." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "inservices — خدمات رقمية" },
+      { property: "og:title", content: "iServices — خدمات رقمية" },
       { property: "og:description", content: "برامج، ذكاء اصطناعي، دعم فني، ودورات مميزة." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

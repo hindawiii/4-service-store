@@ -4,13 +4,13 @@ import { Card, PageShell } from "@/components/layout/PageShell";
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: "الشروط والأحكام | inservices" },
+      { title: "الشروط والأحكام | iServices" },
       {
         name: "description",
-        content: "شروط استخدام متجر inservices: الطلبات، الدفع، التسليم، الاسترجاع، والاستخدام القانوني.",
+        content: "شروط استخدام متجر iServices: الطلبات، الدفع، التسليم، الاسترجاع، والاستخدام القانوني.",
       },
-      { property: "og:title", content: "الشروط والأحكام | inservices" },
-      { property: "og:description", content: "قواعد الطلب والدفع والتسليم والاسترجاع في inservices." },
+      { property: "og:title", content: "الشروط والأحكام | iServices" },
+      { property: "og:description", content: "قواعد الطلب والدفع والتسليم والاسترجاع في iServices." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

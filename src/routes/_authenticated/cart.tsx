@@ -6,9 +6,9 @@ import { useCart, useCartMutations } from "@/lib/cart";
 export const Route = createFileRoute("/_authenticated/cart")({
   head: () => ({
     meta: [
-      { title: "سلة المشتريات | inservices" },
+      { title: "سلة المشتريات | iServices" },
       { name: "description", content: "راجع الخدمات التي أضفتها إلى السلة قبل إتمام الطلب." },
-      { property: "og:title", content: "سلة المشتريات | inservices" },
+      { property: "og:title", content: "سلة المشتريات | iServices" },
       { property: "og:description", content: "راجع خدماتك وأتمم الطلب." },
     ],
   }),

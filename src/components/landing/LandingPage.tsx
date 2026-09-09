@@ -81,7 +81,7 @@ export function LandingPage({ services }: { services: Service[] }) {
             <span className="flex size-9 items-center justify-center rounded-xl bg-primary/15 text-primary">
               <Sparkles className="size-5" strokeWidth={1.5} />
             </span>
-            inservices
+            iServices
           </span>
           <nav className="flex items-center gap-2 text-sm">
             <a href="#about" className="hidden rounded-xl px-3 py-2 text-muted-foreground transition-colors hover:text-foreground sm:block">
@@ -146,7 +146,7 @@ export function LandingPage({ services }: { services: Service[] }) {
       </section>
 
       <section id="features" className="mx-auto max-w-6xl px-4 py-16">
-        <SectionTitle overline="لماذا inservices" title="مميزات تجعل تجربتك أسهل" />
+        <SectionTitle overline="لماذا iServices" title="مميزات تجعل تجربتك أسهل" />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map((f) => (
             <div key={f.title} className="surface-card rounded-3xl p-6">
@@ -202,7 +202,7 @@ export function LandingPage({ services }: { services: Service[] }) {
         <div className="mx-auto max-w-6xl space-y-8 px-4">
           <SectionTitle overline="من نحن" title="فريق تقني سوداني يؤمن بأن التقنية حق للجميع" />
           <p className="max-w-3xl text-sm leading-loose text-muted-foreground sm:text-base">
-            بدأت inservices من حاجة بسيطة: كثير من المستخدمين في السودان يواجهون صعوبة في الوصول إلى
+            بدأت iServices من حاجة بسيطة: كثير من المستخدمين في السودان يواجهون صعوبة في الوصول إلى
             الخدمات الرقمية العالمية — سواء بسبب وسائل الدفع أو الأسعار أو غياب الدعم بالعربية. جمعنا
             خبرتنا في الأنظمة والبرمجة والدعم الفني في متجر واحد يقدّم الخدمة بلغتك، بسعر تقدر عليه،
             وبطريقة دفع تستخدمها كل يوم.
