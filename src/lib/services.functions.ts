@@ -35,7 +35,7 @@ export const listServices = createServerFn({ method: "GET" }).handler(async (): 
 });
 
 export const getService = createServerFn({ method: "GET" })
-  .inputValidator((input) => z.object({ id: z.string() }).parse(input))
+  .validator((input) => z.object({ id: z.string() }).parse(input))
   .handler(async ({ data: input }): Promise<Service | null> => {
     const { data, error } = await publicClient()
       .from("services")
@@ -48,7 +48,7 @@ export const getService = createServerFn({ method: "GET" })
   });
 
 export const listServiceReviews = createServerFn({ method: "GET" })
-  .inputValidator((input) => z.object({ id: z.string() }).parse(input))
+  .validator((input) => z.object({ id: z.string() }).parse(input))
   .handler(async ({ data: input }) => {
     const { data, error } = await publicClient()
       .from("reviews")

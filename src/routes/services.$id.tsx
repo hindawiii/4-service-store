@@ -12,9 +12,11 @@ import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/services/$id")({
   loader: async ({ params }) => {
-    const service = await getService({ data: { id: params.id } });
+    const [service, reviews] = await Promise.all([
+      getService({ data: { id: params.id } }),
+      listServiceReviews({ data: { id: params.id } }).catch(() => []),
+    ]);
     if (!service) throw notFound();
-    const reviews = await listServiceReviews({ data: { id: params.id } });
     return { service, reviews };
   },
   head: ({ loaderData }) => {

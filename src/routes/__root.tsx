@@ -6,6 +6,7 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
@@ -35,7 +36,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
@@ -81,12 +82,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "inservice — خدمات رقمية" },
       { name: "description", content: "منصة الخدمات الرقمية: برامج، ذكاء اصطناعي، دعم فني، ودورات." },
-      { name: "author", content: "Lovable" },
+      { name: "author", content: "inservice" },
       { property: "og:title", content: "inservice — خدمات رقمية" },
       { property: "og:description", content: "برامج، ذكاء اصطناعي، دعم فني، ودورات مميزة." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
