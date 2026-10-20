@@ -3,7 +3,7 @@ import { LandingPage } from "@/components/landing/LandingPage";
 import { listServices } from "@/lib/services.functions";
 
 export const Route = createFileRoute("/")({
-  loader: () => listServices(),
+  loader: () => listServices().catch(() => []),
   head: () => ({
     meta: [
       { title: "inservice — متجر الخدمات الرقمية في السودان" },
@@ -17,6 +17,8 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "خدمات تقنية سريعة: تثبيت أنظمة، اشتراكات AI، دعم فني، ودورات مميزة.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   errorComponent: () => (
