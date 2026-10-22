@@ -78,9 +78,7 @@ export function LandingPage({ services }: { services: Service[] }) {
       <header className="sticky top-0 z-30 border-b border-border/70 bg-background/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
           <span className="flex items-center gap-2 text-base font-extrabold text-foreground">
-            <span className="flex size-9 items-center justify-center rounded-xl bg-primary/15 text-primary">
-              <Sparkles className="size-5" strokeWidth={1.5} />
-            </span>
+            <img src={logoIcon} alt="شعار inservice" width={36} height={36} className="size-9" />
             inservice
           </span>
           <nav className="flex items-center gap-2 text-sm">
