@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import logoIcon from "@/assets/logo-icon.png";
 import type { ReactNode } from "react";
 import { SiteFooter } from "./SiteFooter";
 import { SITE } from "@/config/site";
@@ -18,9 +19,7 @@ export function PageShell({
       <header className="border-b border-border bg-background/80 backdrop-blur">
         <div className="mx-auto flex max-w-4xl items-center justify-between gap-3 px-4 py-3">
           <Link to="/" className="flex items-center gap-2 text-base font-extrabold text-foreground">
-            <span className="flex size-9 items-center justify-center rounded-xl bg-primary/15 text-primary">
-              <Sparkles className="size-5" strokeWidth={1.5} />
-            </span>
+            <img src={logoIcon} alt="شعار inservice" width={36} height={36} className="size-9" />
             {SITE.name}
           </Link>
           <Link
