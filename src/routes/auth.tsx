@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable";
+import logoIcon from "@/assets/logo-icon.png";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -78,6 +79,7 @@ function AuthPage() {
       </div>
 
       <div className="mx-auto w-full max-w-md px-4 py-10">
+        <img src={logoIcon} alt="شعار inservice" width={56} height={56} className="mb-4 size-14" />
         <h1 className="text-2xl font-bold text-foreground">
           {mode === "signin" ? "تسجيل الدخول" : "إنشاء حساب"}
         </h1>

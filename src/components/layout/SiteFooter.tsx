@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { SITE } from "@/config/site";
+import logoIcon from "@/assets/logo-icon.png";
 
 const LINKS = [
   { to: "/services", label: "المتجر" },
@@ -13,7 +14,10 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border py-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-4 text-center text-xs text-muted-foreground">
-        <span className="text-sm font-bold text-foreground">{SITE.name}</span>
+        <span className="flex items-center gap-2 text-sm font-bold text-foreground">
+          <img src={logoIcon} alt="" width={28} height={28} loading="lazy" className="size-7" />
+          {SITE.name}
+        </span>
         <p>{SITE.tagline}</p>
         <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
           {LINKS.map((l) => (

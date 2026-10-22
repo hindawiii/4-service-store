@@ -5,6 +5,7 @@ import { ServiceCard } from "./ServiceCard";
 import { ServiceIcon } from "./ServiceIcon";
 import { useIsAdmin } from "@/hooks/useIsAdmin";
 import { CATEGORIES, type Service, type ServiceCategory } from "@/data/services";
+import logoIcon from "@/assets/logo-icon.png";
 
 export function ServicesExplorer({ services }: { services: Service[] }) {
   const [query, setQuery] = useState("");
@@ -25,6 +26,9 @@ export function ServicesExplorer({ services }: { services: Service[] }) {
       <header className="hero-surface border-b border-border">
         <div className="mx-auto max-w-6xl px-4 pb-10 pt-6">
           <div className="flex items-center gap-3">
+            <Link to="/" aria-label="inservice — الرئيسية" className="shrink-0">
+              <img src={logoIcon} alt="شعار inservice" width={48} height={48} className="size-12" />
+            </Link>
             <div className="relative flex-1">
               <Search
                 className="pointer-events-none absolute right-4 top-1/2 size-5 -translate-y-1/2 text-muted-foreground"
