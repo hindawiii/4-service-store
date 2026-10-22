@@ -19,6 +19,7 @@ import { ServiceCard } from "@/components/services/ServiceCard";
 import { ServiceIcon } from "@/components/services/ServiceIcon";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { CATEGORIES, type Service } from "@/data/services";
+import logoIcon from "@/assets/logo-icon.png";
 
 
 const FEATURES = [
