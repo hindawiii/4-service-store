@@ -78,6 +78,7 @@ function AuthPage() {
       </div>
 
       <div className="mx-auto w-full max-w-md px-4 py-10">
+        <img src={logoIcon} alt="شعار inservice" width={56} height={56} className="mb-4 size-14" />
         <h1 className="text-2xl font-bold text-foreground">
           {mode === "signin" ? "تسجيل الدخول" : "إنشاء حساب"}
         </h1>
