@@ -7,7 +7,8 @@ export type ServiceCategory =
   | "course"
   | "bundle"
   | "anime"
-  | "games";
+  | "games"
+  | "phones";
 
 export interface Service {
   id: string;
@@ -26,6 +27,7 @@ export interface Service {
 export const CATEGORIES: { id: ServiceCategory | "all"; label: string; icon: string }[] = [
   { id: "all", label: "الكل", icon: "Sparkles" },
   { id: "software", label: "برامج وأنظمة", icon: "Laptop" },
+  { id: "phones", label: "هواتف", icon: "Smartphone" },
   { id: "ai", label: "ذكاء اصطناعي", icon: "Bot" },
   { id: "support", label: "دعم فني", icon: "Wrench" },
   { id: "course", label: "دورات مميزة", icon: "GraduationCap" },
