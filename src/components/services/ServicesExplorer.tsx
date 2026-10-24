@@ -116,6 +116,20 @@ export function ServicesExplorer({ services }: { services: Service[] }) {
             </span>
           </Link>
         )}
+        {(category === "software" || category === "all") && (
+          <Link
+            to="/system-tools"
+            className="surface-card mb-4 flex items-center gap-3 rounded-3xl p-4 transition-colors hover:border-primary/50"
+          >
+            <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+              <ServiceIcon name="Laptop" className="size-5" />
+            </span>
+            <span className="flex-1">
+              <span className="block text-sm font-bold text-foreground">حزم التشغيل والتعريفات وأدوات الحرق والضغط</span>
+              <span className="block text-xs text-muted-foreground">Visual C++، DirectX، تعريفات الشاشة، Ventoy، Rufus، 7-Zip</span>
+            </span>
+          </Link>
+        )}
         {results.length === 0 ? (
           <p className="py-16 text-center text-sm text-muted-foreground">
             لا توجد خدمات مطابقة لبحثك.

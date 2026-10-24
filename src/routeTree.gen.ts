@@ -16,6 +16,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EmulatorsRouteImport } from './routes/emulators'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as SystemToolsRouteImport } from './routes/system-tools'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedCartRouteImport } from './routes/_authenticated/cart'
@@ -57,6 +58,11 @@ const EmulatorsRoute = EmulatorsRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SystemToolsRoute = SystemToolsRouteImport.update({
+  id: '/system-tools',
+  path: '/system-tools',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TermsRoute = TermsRouteImport.update({
@@ -107,6 +113,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/emulators': typeof EmulatorsRoute
   '/privacy': typeof PrivacyRoute
+  '/system-tools': typeof SystemToolsRoute
   '/terms': typeof TermsRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/cart': typeof AuthenticatedCartRoute
@@ -123,6 +130,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/emulators': typeof EmulatorsRoute
   '/privacy': typeof PrivacyRoute
+  '/system-tools': typeof SystemToolsRoute
   '/terms': typeof TermsRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/cart': typeof AuthenticatedCartRoute
@@ -141,6 +149,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/emulators': typeof EmulatorsRoute
   '/privacy': typeof PrivacyRoute
+  '/system-tools': typeof SystemToolsRoute
   '/terms': typeof TermsRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/_authenticated/cart': typeof AuthenticatedCartRoute
@@ -159,6 +168,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/emulators'
     | '/privacy'
+    | '/system-tools'
     | '/terms'
     | '/admin'
     | '/cart'
@@ -175,6 +185,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/emulators'
     | '/privacy'
+    | '/system-tools'
     | '/terms'
     | '/admin'
     | '/cart'
@@ -192,6 +203,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/emulators'
     | '/privacy'
+    | '/system-tools'
     | '/terms'
     | '/_authenticated/admin'
     | '/_authenticated/cart'
@@ -210,6 +222,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   EmulatorsRoute: typeof EmulatorsRoute
   PrivacyRoute: typeof PrivacyRoute
+  SystemToolsRoute: typeof SystemToolsRoute
   TermsRoute: typeof TermsRoute
   ServicesIdRoute: typeof ServicesIdRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
@@ -265,6 +278,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/system-tools': {
+      id: '/system-tools'
+      path: '/system-tools'
+      fullPath: '/system-tools'
+      preLoaderRoute: typeof SystemToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -351,6 +371,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   EmulatorsRoute: EmulatorsRoute,
   PrivacyRoute: PrivacyRoute,
+  SystemToolsRoute: SystemToolsRoute,
   TermsRoute: TermsRoute,
   ServicesIdRoute: ServicesIdRoute,
   ServicesIndexRoute: ServicesIndexRoute,
