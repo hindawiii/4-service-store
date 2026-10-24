@@ -102,6 +102,20 @@ export function ServicesExplorer({ services }: { services: Service[] }) {
           </div>
         </div>
 
+        {(category === "games" || category === "all") && (
+          <Link
+            to="/emulators"
+            className="surface-card mb-4 flex items-center gap-3 rounded-3xl p-4 transition-colors hover:border-primary/50"
+          >
+            <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+              <ServiceIcon name="Gamepad2" className="size-5" />
+            </span>
+            <span className="flex-1">
+              <span className="block text-sm font-bold text-foreground">ركن المحاكيات وفحص توافق جهازك</span>
+              <span className="block text-xs text-muted-foreground">اعرف أي محاكي (PS1، PS2، PS3، PSP، أندرويد) يناسب جهازك</span>
+            </span>
+          </Link>
+        )}
         {results.length === 0 ? (
           <p className="py-16 text-center text-sm text-muted-foreground">
             لا توجد خدمات مطابقة لبحثك.
