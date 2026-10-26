@@ -116,6 +116,20 @@ export function ServicesExplorer({ services }: { services: Service[] }) {
             </span>
           </Link>
         )}
+        {(category === "ai" || category === "all") && (
+          <Link
+            to="/local-ai"
+            className="surface-card mb-4 flex items-center gap-3 rounded-3xl p-4 transition-colors hover:border-primary/50"
+          >
+            <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+              <ServiceIcon name="Bot" className="size-5" />
+            </span>
+            <span className="flex-1">
+              <span className="block text-sm font-bold text-foreground">مركز الذكاء الاصطناعي المحلي</span>
+              <span className="block text-xs text-muted-foreground">Llama و Qwen و Gemma و DeepSeek — وهل يشغّلها جهازك؟</span>
+            </span>
+          </Link>
+        )}
         {(category === "software" || category === "all") && (
           <Link
             to="/system-tools"
