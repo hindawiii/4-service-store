@@ -21,7 +21,15 @@ export const Route = createFileRoute("/services/$id")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "الخدمة غير متاحة" }, { name: "robots", content: "noindex" }] };
+      return { meta: [
+        { title: "الخدمة غير متاحة | inservice" },
+        { name: "description", content: "تعذر عرض الخدمة المطلوبة في متجر inservice." },
+        { property: "og:title", content: "الخدمة غير متاحة | inservice" },
+        { property: "og:description", content: "تعذر عرض الخدمة المطلوبة في متجر inservice." },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "robots", content: "noindex" },
+      ] };
     }
     const { service } = loaderData;
     return {
@@ -29,6 +37,8 @@ export const Route = createFileRoute("/services/$id")({
         { title: `${service.name} | inservice` },
         { name: "description", content: service.description },
         { property: "og:title", content: `${service.name} | inservice` },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
         { property: "og:description", content: service.description },
       ],
     };

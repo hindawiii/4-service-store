@@ -12,6 +12,8 @@ export const Route = createFileRoute("/services/")({
         content: "تصفح جميع الخدمات الرقمية: برامج وأنظمة، ذكاء اصطناعي، دعم فني، ودورات مميزة.",
       },
       { property: "og:title", content: "الخدمات | inservice" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       {
         property: "og:description",
         content: "تصفح جميع الخدمات الرقمية وابحث عن ما يناسبك بسعر مناسب.",

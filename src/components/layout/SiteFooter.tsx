@@ -4,6 +4,7 @@ import logoIcon from "@/assets/logo-icon.png";
 
 const LINKS = [
   { to: "/services", label: "المتجر" },
+  { to: "/resources", label: "مصادر التعلم" },
   { to: "/about", label: "من نحن" },
   { to: "/contact", label: "تواصل معنا" },
   { to: "/terms", label: "الشروط والأحكام" },

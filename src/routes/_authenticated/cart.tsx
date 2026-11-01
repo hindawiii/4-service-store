@@ -9,6 +9,8 @@ export const Route = createFileRoute("/_authenticated/cart")({
       { title: "سلة المشتريات | inservice" },
       { name: "description", content: "راجع الخدمات التي أضفتها إلى السلة قبل إتمام الطلب." },
       { property: "og:title", content: "سلة المشتريات | inservice" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:description", content: "راجع خدماتك وأتمم الطلب." },
     ],
   }),

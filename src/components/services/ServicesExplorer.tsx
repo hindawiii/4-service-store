@@ -102,6 +102,20 @@ export function ServicesExplorer({ services }: { services: Service[] }) {
           </div>
         </div>
 
+        {(category === "course" || category === "all") && (
+          <Link
+            to="/resources"
+            className="surface-card mb-4 flex items-center gap-3 rounded-3xl p-4 transition-colors hover:border-primary/50"
+          >
+            <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+              <ServiceIcon name="BookOpen" className="size-5" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-sm font-bold text-foreground">مصادر البرمجة والتصميم والتعلم</span>
+              <span className="block text-xs text-muted-foreground">تعلم عملي، GitHub وبدائله، UI / UX، إلهام بصري ولغات أجنبية</span>
+            </span>
+          </Link>
+        )}
         {(category === "games" || category === "all") && (
           <Link
             to="/emulators"

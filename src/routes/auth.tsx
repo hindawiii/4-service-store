@@ -12,6 +12,8 @@ export const Route = createFileRoute("/auth")({
       { title: "تسجيل الدخول | inservice" },
       { name: "description", content: "سجّل دخولك أو أنشئ حساباً جديداً لطلب الخدمات الرقمية ومتابعة طلباتك." },
       { property: "og:title", content: "تسجيل الدخول | inservice" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:description", content: "أنشئ حسابك لطلب الخدمات ومتابعة الطلبات." },
     ],
   }),

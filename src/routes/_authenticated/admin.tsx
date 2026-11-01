@@ -31,6 +31,8 @@ export const Route = createFileRoute("/_authenticated/admin")({
       { title: "لوحة التحكم | inservice" },
       { name: "description", content: "إدارة الطلبات والخدمات والتقييمات في متجر inservice." },
       { property: "og:title", content: "لوحة التحكم | inservice" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:description", content: "إدارة الطلبات والخدمات والتقييمات." },
       { name: "robots", content: "noindex" },
     ],
