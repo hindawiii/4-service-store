@@ -17,6 +17,8 @@ export const Route = createFileRoute("/_authenticated/orders")({
       { title: "طلباتي | inservice" },
       { name: "description", content: "تابع حالة طلباتك من الخدمات الرقمية وتفاصيل الدفع." },
       { property: "og:title", content: "طلباتي | inservice" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:description", content: "تابع حالة طلباتك وتفاصيلها." },
     ],
   }),

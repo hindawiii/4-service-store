@@ -19,6 +19,8 @@ export const Route = createFileRoute("/_authenticated/checkout")({
       { title: "إتمام الطلب | inservice" },
       { name: "description", content: "اختر طريقة الدفع (بنكك، تحويل بنكي، USDT) وارفع إثبات الدفع لإتمام طلبك." },
       { property: "og:title", content: "إتمام الطلب | inservice" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:description", content: "ادفع عبر بنكك أو USDT وارفع إثبات الدفع." },
     ],
   }),
