@@ -17,6 +17,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EmulatorsRouteImport } from './routes/emulators'
 import { Route as LocalAiRouteImport } from './routes/local-ai'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as SystemToolsRouteImport } from './routes/system-tools'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
@@ -64,6 +65,11 @@ const LocalAiRoute = LocalAiRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SystemToolsRoute = SystemToolsRouteImport.update({
@@ -120,6 +126,7 @@ export interface FileRoutesByFullPath {
   '/emulators': typeof EmulatorsRoute
   '/local-ai': typeof LocalAiRoute
   '/privacy': typeof PrivacyRoute
+  '/resources': typeof ResourcesRoute
   '/system-tools': typeof SystemToolsRoute
   '/terms': typeof TermsRoute
   '/admin': typeof AuthenticatedAdminRoute
@@ -138,6 +145,7 @@ export interface FileRoutesByTo {
   '/emulators': typeof EmulatorsRoute
   '/local-ai': typeof LocalAiRoute
   '/privacy': typeof PrivacyRoute
+  '/resources': typeof ResourcesRoute
   '/system-tools': typeof SystemToolsRoute
   '/terms': typeof TermsRoute
   '/admin': typeof AuthenticatedAdminRoute
@@ -158,6 +166,7 @@ export interface FileRoutesById {
   '/emulators': typeof EmulatorsRoute
   '/local-ai': typeof LocalAiRoute
   '/privacy': typeof PrivacyRoute
+  '/resources': typeof ResourcesRoute
   '/system-tools': typeof SystemToolsRoute
   '/terms': typeof TermsRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
@@ -178,6 +187,7 @@ export interface FileRouteTypes {
     | '/emulators'
     | '/local-ai'
     | '/privacy'
+    | '/resources'
     | '/system-tools'
     | '/terms'
     | '/admin'
@@ -196,6 +206,7 @@ export interface FileRouteTypes {
     | '/emulators'
     | '/local-ai'
     | '/privacy'
+    | '/resources'
     | '/system-tools'
     | '/terms'
     | '/admin'
@@ -215,6 +226,7 @@ export interface FileRouteTypes {
     | '/emulators'
     | '/local-ai'
     | '/privacy'
+    | '/resources'
     | '/system-tools'
     | '/terms'
     | '/_authenticated/admin'
@@ -235,6 +247,7 @@ export interface RootRouteChildren {
   EmulatorsRoute: typeof EmulatorsRoute
   LocalAiRoute: typeof LocalAiRoute
   PrivacyRoute: typeof PrivacyRoute
+  ResourcesRoute: typeof ResourcesRoute
   SystemToolsRoute: typeof SystemToolsRoute
   TermsRoute: typeof TermsRoute
   ServicesIdRoute: typeof ServicesIdRoute
@@ -298,6 +311,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/system-tools': {
@@ -392,6 +412,7 @@ const rootRouteChildren: RootRouteChildren = {
   EmulatorsRoute: EmulatorsRoute,
   LocalAiRoute: LocalAiRoute,
   PrivacyRoute: PrivacyRoute,
+  ResourcesRoute: ResourcesRoute,
   SystemToolsRoute: SystemToolsRoute,
   TermsRoute: TermsRoute,
   ServicesIdRoute: ServicesIdRoute,
