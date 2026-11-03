@@ -17,6 +17,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EmulatorsRouteImport } from './routes/emulators'
 import { Route as LocalAiRouteImport } from './routes/local-ai'
 import { Route as OperatingSystemsRouteImport } from './routes/operating-systems'
+import { Route as PhonesRouteImport } from './routes/phones'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as SystemToolsRouteImport } from './routes/system-tools'
@@ -66,6 +67,11 @@ const LocalAiRoute = LocalAiRouteImport.update({
 const OperatingSystemsRoute = OperatingSystemsRouteImport.update({
   id: '/operating-systems',
   path: '/operating-systems',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PhonesRoute = PhonesRouteImport.update({
+  id: '/phones',
+  path: '/phones',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -132,6 +138,7 @@ export interface FileRoutesByFullPath {
   '/emulators': typeof EmulatorsRoute
   '/local-ai': typeof LocalAiRoute
   '/operating-systems': typeof OperatingSystemsRoute
+  '/phones': typeof PhonesRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
   '/system-tools': typeof SystemToolsRoute
@@ -152,6 +159,7 @@ export interface FileRoutesByTo {
   '/emulators': typeof EmulatorsRoute
   '/local-ai': typeof LocalAiRoute
   '/operating-systems': typeof OperatingSystemsRoute
+  '/phones': typeof PhonesRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
   '/system-tools': typeof SystemToolsRoute
@@ -174,6 +182,7 @@ export interface FileRoutesById {
   '/emulators': typeof EmulatorsRoute
   '/local-ai': typeof LocalAiRoute
   '/operating-systems': typeof OperatingSystemsRoute
+  '/phones': typeof PhonesRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
   '/system-tools': typeof SystemToolsRoute
@@ -196,6 +205,7 @@ export interface FileRouteTypes {
     | '/emulators'
     | '/local-ai'
     | '/operating-systems'
+    | '/phones'
     | '/privacy'
     | '/resources'
     | '/system-tools'
@@ -216,6 +226,7 @@ export interface FileRouteTypes {
     | '/emulators'
     | '/local-ai'
     | '/operating-systems'
+    | '/phones'
     | '/privacy'
     | '/resources'
     | '/system-tools'
@@ -237,6 +248,7 @@ export interface FileRouteTypes {
     | '/emulators'
     | '/local-ai'
     | '/operating-systems'
+    | '/phones'
     | '/privacy'
     | '/resources'
     | '/system-tools'
@@ -259,6 +271,7 @@ export interface RootRouteChildren {
   EmulatorsRoute: typeof EmulatorsRoute
   LocalAiRoute: typeof LocalAiRoute
   OperatingSystemsRoute: typeof OperatingSystemsRoute
+  PhonesRoute: typeof PhonesRoute
   PrivacyRoute: typeof PrivacyRoute
   ResourcesRoute: typeof ResourcesRoute
   SystemToolsRoute: typeof SystemToolsRoute
@@ -324,6 +337,13 @@ declare module '@tanstack/react-router' {
       path: '/operating-systems'
       fullPath: '/operating-systems'
       preLoaderRoute: typeof OperatingSystemsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/phones': {
+      id: '/phones'
+      path: '/phones'
+      fullPath: '/phones'
+      preLoaderRoute: typeof PhonesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -432,6 +452,7 @@ const rootRouteChildren: RootRouteChildren = {
   EmulatorsRoute: EmulatorsRoute,
   LocalAiRoute: LocalAiRoute,
   OperatingSystemsRoute: OperatingSystemsRoute,
+  PhonesRoute: PhonesRoute,
   PrivacyRoute: PrivacyRoute,
   ResourcesRoute: ResourcesRoute,
   SystemToolsRoute: SystemToolsRoute,
