@@ -116,6 +116,20 @@ export function ServicesExplorer({ services }: { services: Service[] }) {
             </span>
           </Link>
         )}
+        {(category === "anime" || category === "games" || category === "all") && (
+          <Link
+            to="/media-guide"
+            className="surface-card mb-4 flex items-center gap-3 rounded-3xl p-4 transition-colors hover:border-primary/50"
+          >
+            <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+              <ServiceIcon name="Tv" className="size-5" />
+            </span>
+            <span className="flex-1">
+              <span className="block text-sm font-bold text-foreground">دليل منصات الأنمي والألعاب</span>
+              <span className="block text-xs text-muted-foreground">الرسمية والقانونية المجانية، والتحذيرات، والقديم مقابل الجديد</span>
+            </span>
+          </Link>
+        )}
         {(category === "games" || category === "all") && (
           <Link
             to="/emulators"
