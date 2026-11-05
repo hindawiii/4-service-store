@@ -16,6 +16,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EmulatorsRouteImport } from './routes/emulators'
 import { Route as LocalAiRouteImport } from './routes/local-ai'
+import { Route as MediaGuideRouteImport } from './routes/media-guide'
 import { Route as OperatingSystemsRouteImport } from './routes/operating-systems'
 import { Route as PhonesRouteImport } from './routes/phones'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -62,6 +63,11 @@ const EmulatorsRoute = EmulatorsRouteImport.update({
 const LocalAiRoute = LocalAiRouteImport.update({
   id: '/local-ai',
   path: '/local-ai',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MediaGuideRoute = MediaGuideRouteImport.update({
+  id: '/media-guide',
+  path: '/media-guide',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OperatingSystemsRoute = OperatingSystemsRouteImport.update({
@@ -137,6 +143,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/emulators': typeof EmulatorsRoute
   '/local-ai': typeof LocalAiRoute
+  '/media-guide': typeof MediaGuideRoute
   '/operating-systems': typeof OperatingSystemsRoute
   '/phones': typeof PhonesRoute
   '/privacy': typeof PrivacyRoute
@@ -158,6 +165,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/emulators': typeof EmulatorsRoute
   '/local-ai': typeof LocalAiRoute
+  '/media-guide': typeof MediaGuideRoute
   '/operating-systems': typeof OperatingSystemsRoute
   '/phones': typeof PhonesRoute
   '/privacy': typeof PrivacyRoute
@@ -181,6 +189,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/emulators': typeof EmulatorsRoute
   '/local-ai': typeof LocalAiRoute
+  '/media-guide': typeof MediaGuideRoute
   '/operating-systems': typeof OperatingSystemsRoute
   '/phones': typeof PhonesRoute
   '/privacy': typeof PrivacyRoute
@@ -204,6 +213,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/emulators'
     | '/local-ai'
+    | '/media-guide'
     | '/operating-systems'
     | '/phones'
     | '/privacy'
@@ -225,6 +235,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/emulators'
     | '/local-ai'
+    | '/media-guide'
     | '/operating-systems'
     | '/phones'
     | '/privacy'
@@ -247,6 +258,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/emulators'
     | '/local-ai'
+    | '/media-guide'
     | '/operating-systems'
     | '/phones'
     | '/privacy'
@@ -270,6 +282,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   EmulatorsRoute: typeof EmulatorsRoute
   LocalAiRoute: typeof LocalAiRoute
+  MediaGuideRoute: typeof MediaGuideRoute
   OperatingSystemsRoute: typeof OperatingSystemsRoute
   PhonesRoute: typeof PhonesRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -330,6 +343,13 @@ declare module '@tanstack/react-router' {
       path: '/local-ai'
       fullPath: '/local-ai'
       preLoaderRoute: typeof LocalAiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/media-guide': {
+      id: '/media-guide'
+      path: '/media-guide'
+      fullPath: '/media-guide'
+      preLoaderRoute: typeof MediaGuideRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/operating-systems': {
@@ -451,6 +471,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   EmulatorsRoute: EmulatorsRoute,
   LocalAiRoute: LocalAiRoute,
+  MediaGuideRoute: MediaGuideRoute,
   OperatingSystemsRoute: OperatingSystemsRoute,
   PhonesRoute: PhonesRoute,
   PrivacyRoute: PrivacyRoute,
